@@ -1,0 +1,137 @@
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Mail, Lock, LogIn } from 'lucide-react'
+import toast from 'react-hot-toast'
+
+const Login: React.FC = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    
+    try {
+      // Simulate login - Replace with actual Supabase authentication
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      if (email && password) {
+        toast.success('Login successful!')
+        navigate('/')
+      } else {
+        toast.error('Please fill in all fields')
+      }
+    } catch (error) {
+      toast.error('Login failed. Please check your credentials.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        {/* Logo */}
+        <div className="text-center">
+          <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">
+            MA
+          </div>
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Welcome Back
+          </h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Sign in to your Melchi Academy account
+          </p>
+        </div>
+
+        {/* Form */}
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm space-y-4">
+            <div>
+              <label htmlFor="email" className="label-field">
+                Email Address
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="input-field pl-10"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="password" className="label-field">
+                Password
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  className="input-field pl-10"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+              />
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                Remember me
+              </label>
+            </div>
+            <div className="text-sm">
+              <Link to="/forgot-password" className="font-medium text-primary-600 hover:text-primary-500">
+                Forgot password?
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full btn-primary flex items-center justify-center py-3"
+            >
+              {isLoading ? (
+                'Signing in...'
+              ) : (
+                <>
+                  Sign In <LogIn size={18} className="ml-2" />
+                </>
+              )}
+            </button>
+          </div>
+
+          <div className="text-center text-sm">
+            <span className="text-gray-600">Don't have an account? </span>
+            <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
+              Create one now
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default Login
