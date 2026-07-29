@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { User, Mail, Lock, Phone, UserPlus } from 'lucide-react'
+import { authService } from '../../services/auth'
 import toast from 'react-hot-toast'
 
 const Register: React.FC = () => {
@@ -38,12 +39,15 @@ const Register: React.FC = () => {
     setIsLoading(true)
     
     try {
-      // Simulate registration - Replace with Supabase
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      toast.success('Registration successful! Please wait for admin approval.')
+      await authService.register(formData.email, formData.password, {
+        full_name: formData.full_name,
+        phone: formData.phone,
+        role: formData.role,
+      })
+      toast.success('Registration successful! Please check your email to verify.')
       navigate('/login')
-    } catch (error) {
-      toast.error('Registration failed. Please try again.')
+    } catch (error: any) {
+      toast.error(error.message || 'Registration failed. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -52,26 +56,18 @@ const Register: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        {/* Logo */}
         <div className="text-center">
           <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">
             MA
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900">
-            Create Account
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Join the Melchi Academy community
-          </p>
+          <h2 className="text-3xl font-extrabold text-gray-900">Create Account</h2>
+          <p className="mt-2 text-sm text-gray-600">Join the Melchi Academy community</p>
         </div>
 
-        {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="full_name" className="label-field">
-                Full Name *
-              </label>
+              <label htmlFor="full_name" className="label-field">Full Name *</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -88,9 +84,7 @@ const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="label-field">
-                Email Address *
-              </label>
+              <label htmlFor="email" className="label-field">Email Address *</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -107,9 +101,7 @@ const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="phone" className="label-field">
-                Phone Number
-              </label>
+              <label htmlFor="phone" className="label-field">Phone Number</label>
               <div className="relative">
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -125,9 +117,7 @@ const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="role" className="label-field">
-                I am a *
-              </label>
+              <label htmlFor="role" className="label-field">I am a *</label>
               <select
                 id="role"
                 name="role"
@@ -142,9 +132,7 @@ const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="label-field">
-                Password *
-              </label>
+              <label htmlFor="password" className="label-field">Password *</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -161,9 +149,7 @@ const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="label-field">
-                Confirm Password *
-              </label>
+              <label htmlFor="confirmPassword" className="label-field">Confirm Password *</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                 <input
@@ -180,34 +166,19 @@ const Register: React.FC = () => {
             </div>
           </div>
 
-          <div className="text-sm text-gray-600">
-            <p>By creating an account, you agree to our</p>
-            <Link to="/terms" className="text-primary-600 hover:text-primary-500">Terms of Service</Link>
-            {' '}and{' '}
-            <Link to="/privacy" className="text-primary-600 hover:text-primary-500">Privacy Policy</Link>
-          </div>
-
           <div>
             <button
               type="submit"
               disabled={isLoading}
               className="w-full btn-primary flex items-center justify-center py-3"
             >
-              {isLoading ? (
-                'Creating account...'
-              ) : (
-                <>
-                  Create Account <UserPlus size={18} className="ml-2" />
-                </>
-              )}
+              {isLoading ? 'Creating account...' : <>Create Account <UserPlus size={18} className="ml-2" /></>}
             </button>
           </div>
 
           <div className="text-center text-sm">
             <span className="text-gray-600">Already have an account? </span>
-            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
-              Sign in here
-            </Link>
+            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">Sign in here</Link>
           </div>
         </form>
       </div>
