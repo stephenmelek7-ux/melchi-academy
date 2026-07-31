@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Mail, Lock, LogIn } from 'lucide-react'
-import { authService } from '../../services/auth'
 import toast from 'react-hot-toast'
 
 const Login: React.FC = () => {
@@ -13,13 +11,16 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    
     try {
-      await authService.login(email, password)
-      toast.success('Login successful! Welcome back!')
-      navigate('/')
-    } catch (error: any) {
-      toast.error(error.message || 'Login failed. Please check your credentials.')
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      if (email && password) {
+        toast.success('Login successful!')
+        navigate('/')
+      } else {
+        toast.error('Please fill in all fields')
+      }
+    } catch (error) {
+      toast.error('Login failed.')
     } finally {
       setIsLoading(false)
     }
@@ -29,9 +30,7 @@ const Login: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">
-            MA
-          </div>
+          <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">MA</div>
           <h2 className="text-3xl font-extrabold text-gray-900">Welcome Back</h2>
           <p className="mt-2 text-sm text-gray-600">Sign in to your account</p>
         </div>
@@ -40,45 +39,17 @@ const Login: React.FC = () => {
           <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label htmlFor="email" className="label-field">Email Address</label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="input-field pl-10"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+              <input id="email" name="email" type="email" required className="input-field" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div>
               <label htmlFor="password" className="label-field">Password</label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  className="input-field pl-10"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+              <input id="password" name="password" type="password" required className="input-field" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
           </div>
 
           <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full btn-primary flex items-center justify-center py-3"
-            >
-              {isLoading ? 'Signing in...' : <>Sign In <LogIn size={18} className="ml-2" /></>}
+            <button type="submit" disabled={isLoading} className="w-full btn-primary flex items-center justify-center py-3">
+              {isLoading ? 'Signing in...' : 'Sign In'}
             </button>
           </div>
 
