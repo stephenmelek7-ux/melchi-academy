@@ -1,38 +1,26 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, Send } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    toast.success('Message sent successfully! We will get back to you soon.')
+    toast.success('Message sent successfully!')
     setFormData({ name: '', email: '', subject: '', message: '' })
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm fixed w-full z-50">
         <div className="container-custom py-3 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-              MA
-            </div>
+            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-xl">MA</div>
             <div>
               <h1 className="text-xl font-bold text-primary-600 leading-tight">Melchi Academy</h1>
               <p className="text-xs text-gray-500">Excellence in Education</p>
@@ -50,7 +38,6 @@ const Contact: React.FC = () => {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="pt-20 bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-20">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
@@ -58,94 +45,45 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-16">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Form */}
             <div className="card">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="label-field">Your Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    className="input-field"
-                    placeholder="Enter your full name"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
+                  <input type="text" name="name" required className="input-field" placeholder="Enter your full name" value={formData.name} onChange={handleChange} />
                 </div>
                 <div>
                   <label className="label-field">Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    className="input-field"
-                    placeholder="Enter your email address"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
+                  <input type="email" name="email" required className="input-field" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
                 </div>
                 <div>
                   <label className="label-field">Subject *</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    required
-                    className="input-field"
-                    placeholder="Enter message subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                  />
+                  <input type="text" name="subject" required className="input-field" placeholder="Enter subject" value={formData.subject} onChange={handleChange} />
                 </div>
                 <div>
                   <label className="label-field">Message *</label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    className="input-field"
-                    placeholder="Type your message here..."
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
+                  <textarea name="message" required rows={5} className="input-field" placeholder="Type your message..." value={formData.message} onChange={handleChange} />
                 </div>
-                <button type="submit" className="w-full btn-primary flex items-center justify-center">
-                  Send Message <Send size={18} className="ml-2" />
-                </button>
+                <button type="submit" className="w-full btn-primary">Send Message</button>
               </form>
             </div>
-
-            {/* Contact Info */}
             <div className="card">
               <h2 className="text-2xl font-bold mb-4">Contact Information</h2>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-gray-700 flex items-center">
-                    <MapPin size={20} className="mr-2 text-primary-600" />
-                    Address
-                  </h3>
-                  <p className="text-gray-600 ml-7">123 Education Street, City, Country</p>
+                  <h3 className="font-semibold text-gray-700">Address</h3>
+                  <p className="text-gray-600">123 Education Street, City, Country</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-700 flex items-center">
-                    <Phone size={20} className="mr-2 text-primary-600" />
-                    Phone
-                  </h3>
-                  <p className="text-gray-600 ml-7">+234 800 000 0000</p>
-                  <p className="text-gray-600 ml-7">+234 800 000 0001</p>
+                  <h3 className="font-semibold text-gray-700">Phone</h3>
+                  <p className="text-gray-600">+234 800 000 0000</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-700 flex items-center">
-                    <Mail size={20} className="mr-2 text-primary-600" />
-                    Email
-                  </h3>
-                  <p className="text-gray-600 ml-7">info@melchiacademy.edu</p>
-                  <p className="text-gray-600 ml-7">admissions@melchiacademy.edu</p>
+                  <h3 className="font-semibold text-gray-700">Email</h3>
+                  <p className="text-gray-600">info@melchiacademy.edu</p>
                 </div>
               </div>
             </div>
@@ -153,7 +91,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
         <div className="container-custom text-center">
           <p>© 2024 Melchi Academy. All rights reserved.</p>
