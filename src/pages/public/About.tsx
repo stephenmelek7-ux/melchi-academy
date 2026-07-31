@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom'
 const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header */}
       <header className="bg-white shadow-sm fixed w-full z-50">
         <div className="container-custom py-3 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-xl">MA</div>
+            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              MA
+            </div>
             <div>
               <h1 className="text-xl font-bold text-primary-600 leading-tight">Melchi Academy</h1>
               <p className="text-xs text-gray-500">Excellence in Education</p>
@@ -25,6 +28,7 @@ const About: React.FC = () => {
         </div>
       </header>
 
+      {/* Hero */}
       <section className="pt-20 bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-20">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Melchi Academy</h1>
@@ -32,21 +36,64 @@ const About: React.FC = () => {
         </div>
       </section>
 
+      {/* Content */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">Our History</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Melchi Academy was founded in the year 2000 with a vision to provide quality education that combines academic excellence with moral and spiritual development.
+              Melchi Academy was founded in the year 2000 with a vision to provide 
+              quality education that combines academic excellence with moral and 
+              spiritual development.
             </p>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              Over the past two decades, we have grown from a small nursery school 
+              to a full-fledged educational institution offering Nursery, Primary, 
+              and Secondary education to thousands of students.
+            </p>
+
             <h2 className="text-3xl font-bold mb-4 mt-8">Our Vision</h2>
-            <p className="text-gray-600 leading-relaxed">To be a center of academic excellence that produces well-rounded, responsible, and God-fearing individuals.</p>
+            <p className="text-gray-600 leading-relaxed">
+              To be a center of academic excellence that produces well-rounded, 
+              responsible, and God-fearing individuals who will make a positive 
+              impact in their communities and the world at large.
+            </p>
+
             <h2 className="text-3xl font-bold mb-4 mt-8">Our Mission</h2>
-            <p className="text-gray-600 leading-relaxed">To provide quality education that integrates spiritual, moral, and academic development for every child.</p>
+            <p className="text-gray-600 leading-relaxed">
+              To provide quality, affordable, and accessible education that integrates 
+              spiritual, moral, and academic development, preparing students for 
+              lifelong learning and responsible citizenship.
+            </p>
+
+            <h2 className="text-3xl font-bold mb-4 mt-8">Core Values</h2>
+            <ul className="text-gray-600 space-y-2">
+              <li className="flex items-center">
+                <span className="text-primary-600 mr-2">✓</span>
+                Excellence in all endeavors
+              </li>
+              <li className="flex items-center">
+                <span className="text-primary-600 mr-2">✓</span>
+                Integrity and honesty
+              </li>
+              <li className="flex items-center">
+                <span className="text-primary-600 mr-2">✓</span>
+                Respect for all individuals
+              </li>
+              <li className="flex items-center">
+                <span className="text-primary-600 mr-2">✓</span>
+                Discipline and hard work
+              </li>
+              <li className="flex items-center">
+                <span className="text-primary-600 mr-2">✓</span>
+                Compassion and service
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
         <div className="container-custom text-center">
           <p>© 2024 Melchi Academy. All rights reserved.</p>
