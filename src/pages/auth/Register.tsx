@@ -15,10 +15,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,10 +34,10 @@ const Register: React.FC = () => {
     setIsLoading(true)
     try {
       await new Promise(resolve => setTimeout(resolve, 1500))
-      toast.success('Registration successful! Please wait for admin approval.')
+      toast.success('Registration successful!')
       navigate('/login')
     } catch (error) {
-      toast.error('Registration failed. Please try again.')
+      toast.error('Registration failed.')
     } finally {
       setIsLoading(false)
     }
@@ -50,9 +47,7 @@ const Register: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">
-            MA
-          </div>
+          <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto mb-4">MA</div>
           <h2 className="text-3xl font-extrabold text-gray-900">Create Account</h2>
           <p className="mt-2 text-sm text-gray-600">Join the Melchi Academy community</p>
         </div>
@@ -61,104 +56,43 @@ const Register: React.FC = () => {
           <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label htmlFor="full_name" className="label-field">Full Name *</label>
-              <input
-                id="full_name"
-                name="full_name"
-                type="text"
-                required
-                className="input-field"
-                placeholder="Enter your full name"
-                value={formData.full_name}
-                onChange={handleChange}
-              />
+              <input id="full_name" name="full_name" type="text" required className="input-field" placeholder="Enter your full name" value={formData.full_name} onChange={handleChange} />
             </div>
-
             <div>
               <label htmlFor="email" className="label-field">Email Address *</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="input-field"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-              />
+              <input id="email" name="email" type="email" required className="input-field" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
             </div>
-
             <div>
               <label htmlFor="phone" className="label-field">Phone Number</label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                className="input-field"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
+              <input id="phone" name="phone" type="tel" className="input-field" placeholder="Enter your phone number" value={formData.phone} onChange={handleChange} />
             </div>
-
             <div>
               <label htmlFor="role" className="label-field">I am a *</label>
-              <select
-                id="role"
-                name="role"
-                className="input-field"
-                value={formData.role}
-                onChange={handleChange}
-              >
+              <select id="role" name="role" className="input-field" value={formData.role} onChange={handleChange}>
                 <option value="parent">Parent / Guardian</option>
                 <option value="teacher">Teaching Staff</option>
                 <option value="staff">Non-Teaching Staff</option>
               </select>
             </div>
-
             <div>
               <label htmlFor="password" className="label-field">Password *</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="input-field"
-                placeholder="Create a password (min 6 characters)"
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <input id="password" name="password" type="password" required className="input-field" placeholder="Create a password (min 6 characters)" value={formData.password} onChange={handleChange} />
             </div>
-
             <div>
               <label htmlFor="confirmPassword" className="label-field">Confirm Password *</label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                required
-                className="input-field"
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
+              <input id="confirmPassword" name="confirmPassword" type="password" required className="input-field" placeholder="Confirm your password" value={formData.confirmPassword} onChange={handleChange} />
             </div>
           </div>
 
           <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full btn-primary flex items-center justify-center py-3"
-            >
+            <button type="submit" disabled={isLoading} className="w-full btn-primary flex items-center justify-center py-3">
               {isLoading ? 'Creating account...' : 'Create Account'}
             </button>
           </div>
 
           <div className="text-center text-sm">
             <span className="text-gray-600">Already have an account? </span>
-            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
-              Sign in here
-            </Link>
+            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">Sign in here</Link>
           </div>
         </form>
       </div>
