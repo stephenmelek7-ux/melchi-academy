@@ -10,6 +10,7 @@ import Register from './pages/auth/Register'
 import VisionMission from './pages/public/VisionMission'
 import CoreValues from './pages/public/CoreValues'
 import History from './pages/public/History'
+import ProprietorWelcome from './pages/public/ProprietorWelcome'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/vision-mission" element={<VisionMission />} />
           <Route path="/core-values" element={<CoreValues />} />
           <Route path="/history" element={<History />} />
+          <Route path="/proprietor-welcome" element={<ProprietorWelcome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
