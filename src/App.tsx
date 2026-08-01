@@ -7,6 +7,7 @@ import About from './pages/public/About'
 import Contact from './pages/public/Contact'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
+import ForgotPassword from './pages/auth/ForgotPassword'
 import VisionMission from './pages/public/VisionMission'
 import CoreValues from './pages/public/CoreValues'
 import History from './pages/public/History'
@@ -42,6 +43,7 @@ function App() {
           <Route path="/prospectus" element={<Prospectus />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
         <Toaster position="top-right" />
       </div>
