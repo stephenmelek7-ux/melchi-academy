@@ -33,6 +33,8 @@ import AdminApprovals from './pages/admin/AdminApprovals'
 import AdminStudents from './pages/admin/AdminStudents'
 import AdminTeachers from './pages/admin/AdminTeachers'
 import AdminClasses from './pages/admin/AdminClasses'
+import AdminSubjects from './pages/admin/AdminSubjects'
+import AdminFees from './pages/admin/AdminFees'
 
 function App() {
   return (
@@ -70,6 +72,8 @@ function App() {
             <Route path="students" element={<AdminStudents />} />
             <Route path="teachers" element={<AdminTeachers />} />
             <Route path="classes" element={<AdminClasses />} />
+            <Route path="subjects" element={<AdminSubjects />} />
+            <Route path="fees" element={<AdminFees />} />
           </Route>
         </Routes>
         <Toaster position="top-right" />
