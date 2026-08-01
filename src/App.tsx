@@ -11,6 +11,8 @@ import VisionMission from './pages/public/VisionMission'
 import CoreValues from './pages/public/CoreValues'
 import History from './pages/public/History'
 import ProprietorWelcome from './pages/public/ProprietorWelcome'
+import PrincipalWelcome from './pages/public/PrincipalWelcome'
+import AcademicProgrammes from './pages/public/AcademicProgrammes'
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/core-values" element={<CoreValues />} />
           <Route path="/history" element={<History />} />
           <Route path="/proprietor-welcome" element={<ProprietorWelcome />} />
+          <Route path="/principal-welcome" element={<PrincipalWelcome />} />
+          <Route path="/academic-programmes" element={<AcademicProgrammes />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
