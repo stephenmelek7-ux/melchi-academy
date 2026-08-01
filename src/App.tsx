@@ -35,6 +35,8 @@ import AdminTeachers from './pages/admin/AdminTeachers'
 import AdminClasses from './pages/admin/AdminClasses'
 import AdminSubjects from './pages/admin/AdminSubjects'
 import AdminFees from './pages/admin/AdminFees'
+import AdminResults from './pages/admin/AdminResults'
+import AdminReports from './pages/admin/AdminReports'
 
 function App() {
   return (
@@ -74,6 +76,8 @@ function App() {
             <Route path="classes" element={<AdminClasses />} />
             <Route path="subjects" element={<AdminSubjects />} />
             <Route path="fees" element={<AdminFees />} />
+            <Route path="results" element={<AdminResults />} />
+            <Route path="reports" element={<AdminReports />} />
           </Route>
         </Routes>
         <Toaster position="top-right" />
