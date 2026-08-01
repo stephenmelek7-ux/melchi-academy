@@ -29,6 +29,8 @@ import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/admin/Dashboard'
 import AdminContent from './pages/admin/AdminContent'
 import AdminUsers from './pages/admin/AdminUsers'
+import AdminApprovals from './pages/admin/AdminApprovals'
+import AdminStudents from './pages/admin/AdminStudents'
 
 function App() {
   return (
@@ -62,6 +64,8 @@ function App() {
             <Route index element={<AdminDashboard />} />
             <Route path="content" element={<AdminContent />} />
             <Route path="users" element={<AdminUsers />} />
+            <Route path="approvals" element={<AdminApprovals />} />
+            <Route path="students" element={<AdminStudents />} />
           </Route>
         </Routes>
         <Toaster position="top-right" />
