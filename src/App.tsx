@@ -18,6 +18,7 @@ import Gallery from './pages/public/Gallery'
 import NewsEvents from './pages/public/NewsEvents'
 import Calendar from './pages/public/Calendar'
 import FAQ from './pages/public/FAQ'
+import Prospectus from './pages/public/Prospectus'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/news-events" element={<NewsEvents />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/prospectus" element={<Prospectus />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
