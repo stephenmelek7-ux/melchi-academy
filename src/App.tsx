@@ -13,6 +13,7 @@ import History from './pages/public/History'
 import ProprietorWelcome from './pages/public/ProprietorWelcome'
 import PrincipalWelcome from './pages/public/PrincipalWelcome'
 import AcademicProgrammes from './pages/public/AcademicProgrammes'
+import Admissions from './pages/public/Admissions'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/proprietor-welcome" element={<ProprietorWelcome />} />
           <Route path="/principal-welcome" element={<PrincipalWelcome />} />
           <Route path="/academic-programmes" element={<AcademicProgrammes />} />
+          <Route path="/admissions" element={<Admissions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
