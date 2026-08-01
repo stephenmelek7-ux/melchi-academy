@@ -37,14 +37,14 @@ const AdminUsers: React.FC = () => {
     .filter(user => filterRole === 'all' || user.role === filterRole)
 
   const getRoleBadge = (role: string) => {
-    const colors = {
+    const colors: { [key: string]: string } = {
       admin: 'bg-purple-100 text-purple-700',
       teacher: 'bg-blue-100 text-blue-700',
       parent: 'bg-green-100 text-green-700',
       student: 'bg-yellow-100 text-yellow-700',
       staff: 'bg-gray-100 text-gray-700',
     }
-    return colors[role as keyof typeof colors] || 'bg-gray-100 text-gray-700'
+    return colors[role] || 'bg-gray-100 text-gray-700'
   }
 
   const getStatusBadge = (status: string) => {
