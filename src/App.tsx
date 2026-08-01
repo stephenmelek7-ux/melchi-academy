@@ -15,6 +15,7 @@ import PrincipalWelcome from './pages/public/PrincipalWelcome'
 import AcademicProgrammes from './pages/public/AcademicProgrammes'
 import Admissions from './pages/public/Admissions'
 import Gallery from './pages/public/Gallery'
+import NewsEvents from './pages/public/NewsEvents'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/academic-programmes" element={<AcademicProgrammes />} />
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/news-events" element={<NewsEvents />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
