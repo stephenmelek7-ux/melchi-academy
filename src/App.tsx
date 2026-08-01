@@ -9,6 +9,7 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import VisionMission from './pages/public/VisionMission'
 import CoreValues from './pages/public/CoreValues'
+import History from './pages/public/History'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/vision-mission" element={<VisionMission />} />
           <Route path="/core-values" element={<CoreValues />} />
+          <Route path="/history" element={<History />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
