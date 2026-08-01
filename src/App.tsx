@@ -2,12 +2,10 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
+// Public Pages
 import Home from './pages/public/Home'
 import About from './pages/public/About'
 import Contact from './pages/public/Contact'
-import Login from './pages/auth/Login'
-import Register from './pages/auth/Register'
-import ForgotPassword from './pages/auth/ForgotPassword'
 import VisionMission from './pages/public/VisionMission'
 import CoreValues from './pages/public/CoreValues'
 import History from './pages/public/History'
@@ -21,11 +19,23 @@ import Calendar from './pages/public/Calendar'
 import FAQ from './pages/public/FAQ'
 import Prospectus from './pages/public/Prospectus'
 
+// Auth Pages
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
+import ForgotPassword from './pages/auth/ForgotPassword'
+
+// Admin Layout & Pages
+import AdminLayout from './layouts/AdminLayout'
+import AdminDashboard from './pages/admin/Dashboard'
+import AdminContent from './pages/admin/AdminContent'
+import AdminUsers from './pages/admin/AdminUsers'
+
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -41,9 +51,18 @@ function App() {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/prospectus" element={<Prospectus />} />
+
+          {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="content" element={<AdminContent />} />
+            <Route path="users" element={<AdminUsers />} />
+          </Route>
         </Routes>
         <Toaster position="top-right" />
       </div>
