@@ -140,4 +140,61 @@ const AdminUsers: React.FC = () => {
                   <td className="px-6 py-4 text-sm text-gray-500">{user.joined}</td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      {user
+                      {user.status === 'pending' && (
+                        <button
+                          onClick={() => handleApprove(user.id)}
+                          className="p-1 text-green-600 hover:bg-green-50 rounded-lg transition"
+                          title="Approve"
+                        >
+                          <CheckCircle size={18} />
+                        </button>
+                      )}
+                      <button
+                        className="p-1 text-blue-600 hover:bg-blue-50 rounded-lg transition"
+                        title="View"
+                      >
+                        <Eye size={18} />
+                      </button>
+                      <button
+                        className="p-1 text-gray-600 hover:bg-gray-50 rounded-lg transition"
+                        title="Edit"
+                      >
+                        <Edit size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(user.id)}
+                        className="p-1 text-red-600 hover:bg-red-50 rounded-lg transition"
+                        title="Delete"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {filteredUsers.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-gray-500">No users found</p>
+          </div>
+        )}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex items-center justify-between mt-4">
+        <p className="text-sm text-gray-500">Showing {filteredUsers.length} of {users.length} users</p>
+        <div className="flex gap-2">
+          <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">Previous</button>
+          <button className="px-3 py-1 bg-primary-600 text-white rounded-lg text-sm">1</button>
+          <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">2</button>
+          <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">3</button>
+          <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">Next</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default AdminUsers
